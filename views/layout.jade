@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    // testStyle.lessから動的コンパイルされるよう、testStyle.cssファイルをリクエスト
+    link(rel='stylesheet', href='/stylesheets/testStyle.css')
+  body
+    block content
