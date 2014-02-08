@@ -13,14 +13,29 @@ var Hoge = mongoose.model("Hoge");
 
 exports.mongodbtest = function(req, res) {
 
-    var h = new Hoge();
-    h.text = "testData";
-    h.id = "testId";
-    h.save(function(err) {
-        if (err) { console.log(err); }
-    });
-    
-    Hoge.find({}, function(err, docs) {
-        res.send(docs);
-    });
+    var actions = {
+        "put": function() {
+            var text = req.body.text;
+            var id = req.body.id;
+            var h = new Hoge({
+                text: text,
+                id: id
+            });
+            h.save(function(err) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.send("Success!");
+                }
+            });
+        },
+        "load": function() {
+            Hoge.find({}, function(err, docs) {
+                res.send(docs);
+            });
+        }
+    };
+    var actionName = req.query.action;
+    console.log("actionName: " + actionName);
+    actions[actionName]();
 };
