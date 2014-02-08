@@ -9,12 +9,18 @@ var hogeSchema = new mongoose.Schema({
 });
 mongoose.model("Hoge", hogeSchema);
 mongoose.connect("mongodb://localhost/hoge");
-var hoge = mongoose.model("Hoge");
+var Hoge = mongoose.model("Hoge");
 
 exports.mongodbtest = function(req, res) {
 
-    hoge.find(function(err, docs) {
+    var h = new Hoge();
+    h.text = "testData";
+    h.id = "testId";
+    h.save(function(err) {
+        if (err) { console.log(err); }
+    });
+    
+    Hoge.find({}, function(err, docs) {
         res.send(docs);
     });
-
-}
+};
