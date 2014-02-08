@@ -35,7 +35,7 @@ exports.mongodbtest = function(req, res) {
             });
         }
     };
-    var actionName = req.query.action;
-    console.log("actionName: " + actionName);
+    
+    var actionName = req.query.action || "load";
     actions[actionName]();
 };
