@@ -42,6 +42,7 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/rss20', rss.rss20);
 app.get('/mongodbtest', mongodbtest.mongodbtest);
+app.post('/mongodbtest', mongodbtest.mongodbtest);
 
 // hello world page.
 app.get("/hello.world", function(req, res) {

@@ -26,8 +26,36 @@ $(function(){
         });
     }
     
+    function showInputArea(){
+        $("#inputArea").toggleClass("hide", false);
+    }
+    
+    function hideInputArea(){
+        $("#inputArea").toggleClass("hide", true);
+    }
+    
+    function addData(){
+        $.ajax({
+            async: true,
+            data: {
+                text: $("#strText").val(),
+                id: $("#strId").val()
+            },
+            type: "POST",
+            url: "mongodbtest?action=put"
+        }).done(function(){
+            hideInputArea();
+        });
+    }
+    
     // attach events
     $("#btnRead").on("click", function(event){
         getData();
+    });
+    $("#btnAdd").on("click", function(event){
+        showInputArea();
+    });
+    $("#btnSubmit").on("click", function(event){
+        addData();
     });
 });
