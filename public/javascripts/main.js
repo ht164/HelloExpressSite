@@ -27,11 +27,11 @@ $(function(){
     }
     
     function showInputArea(){
-        $("#inputArea").toggleClass("hide", false);
+        $("#inputArea").show("blind");
     }
     
     function hideInputArea(){
-        $("#inputArea").toggleClass("hide", true);
+        $("#inputArea").hide();
     }
     
     function addData(){
@@ -48,14 +48,14 @@ $(function(){
         });
     }
     
-    // attach events
-    $("#btnRead").on("click", function(event){
+    // generate jQuery UI button and attach event
+    $("#btnRead").button().on("click", function(event){
         getData();
     });
-    $("#btnAdd").on("click", function(event){
+    $("#btnAdd").button().on("click", function(event){
         showInputArea();
     });
-    $("#btnSubmit").on("click", function(event){
+    $("#btnSubmit").button().on("click", function(event){
         addData();
     });
 });
