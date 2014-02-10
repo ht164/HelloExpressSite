@@ -27,11 +27,11 @@ $(function(){
     }
     
     function showInputArea(){
-        $("#inputArea").toggleClass("hide", false);
+        $("#inputArea").show("blind");
     }
     
     function hideInputArea(){
-        $("#inputArea").toggleClass("hide", true);
+        $("#inputArea").hide();
     }
     
     function addData(){
